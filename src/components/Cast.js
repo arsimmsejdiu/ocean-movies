@@ -10,9 +10,6 @@ const Wrapper = styled.div`
 `;
 
 const Credits = ({ cast, baseUrl }) => {
-  if (!cast) {
-    return <Loader />;
-  }
   const [totalShow, setTotalShow] = useState(null);
   const sliderElement = useRef();
 
@@ -34,6 +31,10 @@ const Credits = ({ cast, baseUrl }) => {
     window.addEventListener('resize', changeTotalShow);
     return () => window.removeEventListener('resize', changeTotalShow);
   }, []);
+
+  if (!cast) {
+    return <Loader />;
+  }
 
   const settings = {
     dots: false,
